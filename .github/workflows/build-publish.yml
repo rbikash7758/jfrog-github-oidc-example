@@ -24,12 +24,12 @@ jobs:
          uses: actions/setup-node@v3
    
        - name: Setup JFrog CLI
-         uses: jfrog/setup-jfrog-cli@v3
-         env:  
-           JF_URL: https://bikashjfrog.jfrog.io
+       - uses: jfrog/setup-jfrog-cli@v4
+         env:
+           JF_URL: https://bikashjfrog.jfrog.io 
          with:
-           oidc-provider-name: ${{ env.OIDC_PROVIDER }}
-           oidc-audience: ${{ env.OIDC_AUDIENCE }}
+           oidc-provider-name: github-jfrog 
+            oidc-audience: my-aud
 
        - name: Set CLI Config
          run: jf npm-config --global=true --repo-resolve=$PLATFORM_REPO --repo-deploy=$PLATFORM_REPO
